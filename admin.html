@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pizza Nova — замовлення</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="admin-page">
+  <main class="admin-wrap">
+    <div class="admin-head">
+      <div>
+        <p class="eyebrow">Admin</p>
+        <h1>Замовлення з бази даних</h1>
+      </div>
+      <a class="secondary-link" href="/">Назад на сайт</a>
+    </div>
+
+    <div id="ordersStatus" class="empty-cart">Завантаження замовлень...</div>
+
+    <table class="orders-table" id="ordersTable" hidden>
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Клієнт</th>
+          <th>Адреса</th>
+          <th>Позиції</th>
+          <th>Сума</th>
+          <th>Дата</th>
+        </tr>
+      </thead>
+      <tbody id="ordersBody"></tbody>
+    </table>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

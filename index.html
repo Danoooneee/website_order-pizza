@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pizza Nova — замовлення піци онлайн</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="logo" href="#">
+        <span class="logo-mark">🍕</span>
+        <span>Pizza Nova</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#menu">Меню</a>
+        <a href="#about">Про нас</a>
+        <a href="#delivery">Доставка</a>
+      </div>
+
+      <button class="cart-button" id="openCartBtn" type="button" aria-label="Відкрити корзину">
+        <span>Корзина</span>
+        <strong id="cartCount">0</strong>
+      </button>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Гаряча піца • швидка доставка • свіжі інгредієнти</p>
+        <h1>Замов піцу онлайн за пару кліків</h1>
+        <p class="hero-text">
+          Вибирай піцу, напої, снеки та десерти. Додай у корзину, підтвердь замовлення —
+          і воно автоматично потрапить у базу даних.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-link" href="#menu">Перейти до меню</a>
+          <button class="secondary-link" id="heroCartBtn" type="button">Переглянути корзину</button>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80" alt="Велика піца з сиром і томатами">
+        <div class="floating-badge">
+          <span>від 20 хв</span>
+          <strong>доставка</strong>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="stats-section">
+      <div class="stat-card">
+        <strong>18+</strong>
+        <span>позицій у меню</span>
+      </div>
+      <div class="stat-card">
+        <strong>4.9</strong>
+        <span>оцінка клієнтів</span>
+      </div>
+      <div class="stat-card">
+        <strong>100%</strong>
+        <span>свіжа моцарела</span>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Меню</p>
+          <h2>Усі позиції піцерії</h2>
+        </div>
+        <div class="filters" id="filters"></div>
+      </div>
+
+      <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <section class="info-section" id="about">
+      <div class="info-card">
+        <p class="eyebrow">Про нас</p>
+        <h2>Готуємо на тонкому тісті та кам’яній печі</h2>
+        <p>
+          У цьому шаблоні можна легко змінити назву піцерії, ціни, фото, категорії та склад.
+          Усі позиції меню знаходяться в масиві `menuItems` у файлі `script.js`.
+        </p>
+      </div>
+      <div class="info-card dark" id="delivery">
+        <p class="eyebrow">Доставка</p>
+        <h2>Замовлення записуються в SQLite</h2>
+        <p>
+          Після підтвердження корзини frontend надсилає замовлення на `/api/orders`.
+          Backend `server.js` зберігає його в базу `database.sqlite`.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-panel">
+      <div class="cart-header">
+        <div>
+          <p class="eyebrow">Ваше замовлення</p>
+          <h2>Корзина</h2>
+        </div>
+        <button class="icon-btn" id="closeCartBtn" type="button" aria-label="Закрити корзину">×</button>
+      </div>
+
+      <div class="cart-items" id="cartItems"></div>
+
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Проміжна сума</span>
+          <strong id="subtotalValue">€0.00</strong>
+        </div>
+        <div class="summary-row">
+          <span>Доставка</span>
+          <strong id="deliveryValue">€0.00</strong>
+        </div>
+        <div class="summary-row total">
+          <span>Разом</span>
+          <strong id="totalValue">€0.00</strong>
+        </div>
+      </div>
+
+      <form class="checkout-form" id="checkoutForm">
+        <h3>Дані для доставки</h3>
+
+        <label>
+          Ім’я
+          <input name="customerName" type="text" placeholder="Наприклад: Юрій" required>
+        </label>
+
+        <label>
+          Телефон
+          <input name="phone" type="tel" placeholder="+421..." required>
+        </label>
+
+        <label>
+          Адреса доставки
+          <input name="address" type="text" placeholder="Вулиця, будинок, квартира" required>
+        </label>
+
+        <label>
+          Коментар
+          <textarea name="comment" rows="3" placeholder="Побажання до замовлення"></textarea>
+        </label>
+
+        <button class="checkout-btn" type="submit">Підтвердити замовлення</button>
+        <p class="form-message" id="formMessage"></p>
+      </form>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
