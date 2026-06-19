@@ -157,7 +157,7 @@ img {
 
 .eyebrow {
   margin: 0 0 12px;
-  color: var(--primary-dark);
+  color: red;
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
